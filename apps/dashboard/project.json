@@ -1,6 +1,6 @@
 {
-  "root": "apps/shell",
-  "sourceRoot": "apps/shell/src",
+  "root": "apps/dashboard",
+  "sourceRoot": "apps/dashboard/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,23 +9,26 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/apps/shell",
-        "index": "apps/shell/src/index.html",
+        "outputPath": "dist/apps/dashboard",
+        "index": "apps/dashboard/src/index.html",
         "baseHref": "/",
-        "main": "apps/shell/src/main.tsx",
-        "polyfills": "apps/shell/src/polyfills.ts",
-        "tsConfig": "apps/shell/tsconfig.app.json",
-        "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
-        "styles": ["apps/shell/src/styles.css"],
+        "main": "apps/dashboard/src/main.tsx",
+        "polyfills": "apps/dashboard/src/polyfills.ts",
+        "tsConfig": "apps/dashboard/tsconfig.app.json",
+        "assets": [
+          "apps/dashboard/src/favicon.ico",
+          "apps/dashboard/src/assets"
+        ],
+        "styles": ["apps/dashboard/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/shell/webpack.config.js"
+        "webpackConfig": "apps/dashboard/webpack.config.js"
       },
       "configurations": {
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/shell/src/environments/environment.ts",
-              "with": "apps/shell/src/environments/environment.prod.ts"
+              "replace": "apps/dashboard/src/environments/environment.ts",
+              "with": "apps/dashboard/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -40,13 +43,13 @@
     "serve": {
       "executor": "@nrwl/web:dev-server",
       "options": {
-        "port": 4200,
-        "buildTarget": "shell:build",
+        "port": 4201,
+        "buildTarget": "dashboard:build",
         "hmr": false
       },
       "configurations": {
         "production": {
-          "buildTarget": "shell:build:production",
+          "buildTarget": "dashboard:build:production",
           "hmr": false
         }
       }
@@ -55,14 +58,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/shell/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/dashboard/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/shell"],
+      "outputs": ["coverage/apps/dashboard"],
       "options": {
-        "jestConfig": "apps/shell/jest.config.js",
+        "jestConfig": "apps/dashboard/jest.config.js",
         "passWithNoTests": true
       }
     }
