@@ -80,7 +80,6 @@ module.exports = function withModuleFederation(options) {
     };
 
     config.plugins.push(new ModuleFederationPlugin(mfeOptions));
-    console.log(config);
 
     return config;
   };
