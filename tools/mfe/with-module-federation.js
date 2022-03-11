@@ -46,7 +46,7 @@ module.exports = function withModuleFederation(options) {
       const node = graph.nodes[dep.target];
       if (node.data.projectType !== 'application') {
         acc[node.name] = {
-          singleton: true,
+          requiredVersion: false
         };
       }
     }
@@ -68,7 +68,7 @@ module.exports = function withModuleFederation(options) {
     }, {});
   }
 
-  return (config) => {
+  return (config, options) => {
     config = getWebpackConfig(config);
 
     config.output.uniqueName = options.name;

@@ -8,30 +8,18 @@ const Dashboard = React.lazy(() => import('dashboard/Module'));
 export function App() {
   return (
     <>
-      <TopBar
-        pages={[
-          { text: 'Dashboard', link: '/' },
-          { text: 'About', link: '/about' },
-        ]}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <React.Suspense fallback={null}>
-              <Dashboard />
-            </React.Suspense>
-          }
+      <React.Suspense fallback={null}>
+        <TopBar
+          pages={[
+            { text: 'Dashboard', link: '/' },
+            { text: 'About', link: '/about' },
+          ]}
         />
-        <Route
-          path="/about"
-          element={
-            <React.Suspense fallback={null}>
-              <About />
-            </React.Suspense>
-          }
-        />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </React.Suspense>
     </>
   );
 }
