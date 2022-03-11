@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { TopBar } from '@acme/ui/navigation';
 
 const About = React.lazy(() => import('about/Module'));
 const Dashboard = React.lazy(() => import('dashboard/Module'));
@@ -7,21 +8,15 @@ const Dashboard = React.lazy(() => import('dashboard/Module'));
 export function App() {
   return (
     <>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
+      <TopBar
+        pages={[
+          { text: 'Dashboard', link: '/' },
+          { text: 'About', link: '/about' },
+        ]}
+      />
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
         <Route
-          path="dashboard"
+          path="/"
           element={
             <React.Suspense fallback={null}>
               <Dashboard />
@@ -29,7 +24,7 @@ export function App() {
           }
         />
         <Route
-          path="about"
+          path="/about"
           element={
             <React.Suspense fallback={null}>
               <About />
